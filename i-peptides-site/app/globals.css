@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg: 248 250 252;        /* slate-50 */
+  --panel: 255 255 255;     /* white */
+  --text: 15 23 42;         /* slate-900 */
+  --muted: 71 85 105;       /* slate-600 */
+  --brand: 37 99 235;       /* blue-600 */
+  --brand2: 59 130 246;     /* blue-500 */
+  --ring: 37 99 235;
+}
+
+html, body { height: 100%; }
+body{
+  color: rgb(var(--text));
+  background:
+    radial-gradient(1200px 800px at 10% 0%, rgba(var(--brand), 0.10), transparent 60%),
+    radial-gradient(900px 600px at 95% 10%, rgba(var(--brand2), 0.10), transparent 55%),
+    rgb(var(--bg));
+}
+
+::selection{
+  background: rgba(var(--brand), .25);
+}
+
+.container{
+  @apply mx-auto max-w-6xl px-4;
+}
+
+.glass{
+  background: rgba(var(--panel), 0.72);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: theme('boxShadow.glass');
+}
+
+a { color: inherit; }
