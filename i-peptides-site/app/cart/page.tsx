@@ -45,11 +45,11 @@ export default function CartPage() {
       if (data.url) {
         window.location.href = data.url;
       } else {
-        alert("Failed to create checkout session");
+        alert("Не удалось создать сессию оплаты");
       }
     } catch (error) {
       console.error("Checkout error:", error);
-      alert("Something went wrong. Please try again.");
+      alert("Что-то пошло не так. Попробуйте ещё раз.");
     } finally {
       setLoading(false);
     }
@@ -70,14 +70,14 @@ export default function CartPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold">Cart</h1>
-        <p className="mt-1 text-slate-600">Checkout здесь заглушка. Подключите Stripe Checkout / PayPal по требованиям вашего бизнеса.</p>
+        <h1 className="text-2xl font-semibold">Корзина</h1>
+        <p className="mt-1 text-slate-600">Оплата здесь демо-версия. Подключите Stripe Checkout / PayPal в соответствии с требованиями вашего бизнеса.</p>
       </div>
 
       {rows.length === 0 ? (
         <div className="glass rounded-xl2 p-8">
-          <div className="font-semibold">Your cart is empty</div>
-          <Link href="/shop" className="mt-2 inline-block text-sm text-blue-700 hover:underline">Go to shop →</Link>
+          <div className="font-semibold">Ваша корзина пуста</div>
+          <Link href="/shop" className="mt-2 inline-block text-sm text-blue-700 hover:underline">Перейти в магазин →</Link>
         </div>
       ) : (
         <div className="grid gap-6 md:grid-cols-3">
@@ -92,7 +92,7 @@ export default function CartPage() {
                   <button
                     className="rounded-lg p-2 text-slate-600 hover:bg-red-50 hover:text-red-600 transition"
                     onClick={() => remove(r.productId)}
-                    aria-label="Remove item"
+                    aria-label="Удалить товар"
                   >
                     <Trash2 className="h-4 w-4" />
                   </button>
@@ -100,13 +100,13 @@ export default function CartPage() {
 
                 <div className="mt-3 flex items-center justify-between gap-3">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-slate-600">Qty:</span>
+                    <span className="text-sm text-slate-600">Кол-во:</span>
                     <div className="flex items-center gap-1 rounded-xl border border-slate-200 bg-white/70">
                       <button
                         onClick={() => decrementQty(r.productId, r.qty)}
                         disabled={r.qty <= 1}
                         className="rounded-l-xl p-2 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition"
-                        aria-label="Decrease quantity"
+                        aria-label="Уменьшить количество"
                       >
                         <Minus className="h-3 w-3" />
                       </button>
@@ -122,7 +122,7 @@ export default function CartPage() {
                         onClick={() => incrementQty(r.productId, r.qty)}
                         disabled={r.qty >= 999}
                         className="rounded-r-xl p-2 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition"
-                        aria-label="Increase quantity"
+                        aria-label="Увеличить количество"
                       >
                         <Plus className="h-3 w-3" />
                       </button>
@@ -134,25 +134,25 @@ export default function CartPage() {
                 </div>
               </div>
             ))}
-            <button className="text-sm text-slate-600 hover:underline" onClick={clear}>Clear cart</button>
+            <button className="text-sm text-slate-600 hover:underline" onClick={clear}>Очистить корзину</button>
           </div>
 
           <div className="glass rounded-xl2 p-5 h-fit">
-            <div className="font-semibold">Summary</div>
+            <div className="font-semibold">Итого</div>
             <div className="mt-3 flex items-center justify-between text-sm text-slate-700">
-              <span>Total</span>
+              <span>Всего</span>
               <span className="font-semibold">{(total/100).toFixed(2)} EUR</span>
             </div>
 
             <div className="mt-4 space-y-2">
               <Button className="w-full" onClick={handleCheckout} disabled={loading}>
-                {loading ? "Processing..." : "Proceed to checkout"}
+                {loading ? "Обработка..." : "Перейти к оплате"}
               </Button>
-              <Link href="/shop" className="block text-center text-sm text-blue-700 hover:underline">Continue shopping</Link>
+              <Link href="/shop" className="block text-center text-sm text-blue-700 hover:underline">Продолжить покупки</Link>
             </div>
 
             <p className="mt-4 text-xs text-slate-500">
-              Replace currency logic, tax/VAT, and shipping rules with your real setup.
+              Замените логику валюты, НДС и правила доставки на ваши реальные настройки.
             </p>
           </div>
         </div>
