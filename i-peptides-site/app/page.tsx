@@ -8,48 +8,87 @@ export default function HomePage() {
   const featuredPeptides = peptides.slice(0, 3);
 
   return (
-    <div className="space-y-10">
-      {/* Hero секция с градиентом */}
-      <section className="relative overflow-hidden glass rounded-xl2 p-8 md:p-10 before:absolute before:inset-0 before:bg-gradient-to-br before:from-blue-50/50 before:via-transparent before:to-purple-50/30 before:rounded-xl2 before:pointer-events-none">
-        <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-2xl">
-            <Badge>Магазин + База знаний</Badge>
-            <h1 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
-              i-peptides — магазин и база знаний, где ничего не нужно “искать вслепую”
-            </h1>
-            <p className="mt-4 text-slate-600">
-              Один поиск по всему сайту, быстрые фильтры, понятные карточки и связка: <b>пептид → товары</b> и <b>товар → профиль пептида</b>.
-              Контент здесь демонстрационный — вы позже подмените реальные описания, фото и юридические тексты.
-            </p>
-          </div>
+    <div className="space-y-16">
+      {/* Hero секция */}
+      <section className="relative overflow-hidden glass rounded-xl2 p-8 md:p-12 before:absolute before:inset-0 before:bg-gradient-to-br before:from-blue-50/50 before:via-transparent before:to-purple-50/30 before:rounded-xl2 before:pointer-events-none">
+        <div className="relative z-10 text-center max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-blue-700 to-purple-700 bg-clip-text text-transparent">
+            Качественные пептиды для исследований
+          </h1>
+          <p className="mt-6 text-lg text-slate-600 leading-relaxed">
+            Широкий выбор сертифицированных пептидов высокой чистоты.
+            Быстрая доставка, гарантия качества и техподдержка специалистов.
+          </p>
 
-          <div className="flex flex-wrap gap-3">
-            <Link href="/shop"><Button>Открыть магазин</Button></Link>
-            <Link href="/peptides"><Button variant="ghost">База пептидов</Button></Link>
+          <div className="mt-8 flex flex-wrap gap-4 justify-center">
+            <Link href="/shop">
+              <Button className="px-8 py-6 text-lg">Каталог товаров</Button>
+            </Link>
+            <Link href="/peptides">
+              <Button variant="ghost" className="px-8 py-6 text-lg">База знаний о пептидах</Button>
+            </Link>
           </div>
         </div>
+      </section>
 
-        <div className="relative z-10 mt-8 grid gap-4 md:grid-cols-3">
-          <div className="glass rounded-xl2 p-5 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-blue-100/50">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-xl shadow-lg">🔍</div>
-              <div className="font-semibold text-slate-800">Глобальный поиск</div>
+      {/* Категории пептидов */}
+      <section className="space-y-6">
+        <h2 className="text-2xl font-bold text-center">Категории пептидов</h2>
+        <div className="grid gap-5 md:grid-cols-4">
+          <Link href="/shop?category=Growth" className="group">
+            <div className="glass rounded-xl2 p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-slate-200/50 hover:border-blue-300 text-center">
+              <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-3xl shadow-lg mb-4">💪</div>
+              <h3 className="font-semibold text-slate-800 mb-2">Рост и восстановление</h3>
+              <p className="text-sm text-slate-600">Пептиды для мышечного роста</p>
             </div>
-            <p className="text-sm text-slate-600 leading-relaxed">По товарам, пептидам и гайдам — с подсказками и алиасами.</p>
+          </Link>
+
+          <Link href="/shop?category=Recovery" className="group">
+            <div className="glass rounded-xl2 p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-slate-200/50 hover:border-green-300 text-center">
+              <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white text-3xl shadow-lg mb-4">🔬</div>
+              <h3 className="font-semibold text-slate-800 mb-2">Восстановление</h3>
+              <p className="text-sm text-slate-600">Ускорение регенерации тканей</p>
+            </div>
+          </Link>
+
+          <Link href="/shop?category=Performance" className="group">
+            <div className="glass rounded-xl2 p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-slate-200/50 hover:border-purple-300 text-center">
+              <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white text-3xl shadow-lg mb-4">⚡</div>
+              <h3 className="font-semibold text-slate-800 mb-2">Производительность</h3>
+              <p className="text-sm text-slate-600">Улучшение физических показателей</p>
+            </div>
+          </Link>
+
+          <Link href="/shop" className="group">
+            <div className="glass rounded-xl2 p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-slate-200/50 hover:border-orange-300 text-center">
+              <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white text-3xl shadow-lg mb-4">📦</div>
+              <h3 className="font-semibold text-slate-800 mb-2">Все товары</h3>
+              <p className="text-sm text-slate-600">Полный каталог продукции</p>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      {/* Преимущества */}
+      <section className="glass rounded-xl2 p-8 md:p-10">
+        <h2 className="text-2xl font-bold text-center mb-8">Почему выбирают нас</h2>
+        <div className="grid gap-6 md:grid-cols-3">
+          <div className="text-center">
+            <div className="w-14 h-14 mx-auto rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-2xl shadow-lg mb-4">✓</div>
+            <h3 className="font-semibold text-slate-800 mb-2">Гарантия качества</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">Все пептиды проходят лабораторный контроль, сертификаты качества (COA) на каждую партию</p>
           </div>
-          <div className="glass rounded-xl2 p-5 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-purple-100/50">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white text-xl shadow-lg">🗺️</div>
-              <div className="font-semibold text-slate-800">Удобная навигация</div>
-            </div>
-            <p className="text-sm text-slate-600 leading-relaxed">Категории + теги + "Related" блоки + сравнения.</p>
+
+          <div className="text-center">
+            <div className="w-14 h-14 mx-auto rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-2xl shadow-lg mb-4">🚚</div>
+            <h3 className="font-semibold text-slate-800 mb-2">Быстрая доставка</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">Отправка в день заказа, надежная упаковка и отслеживание посылки</p>
           </div>
-          <div className="glass rounded-xl2 p-5 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-indigo-100/50">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center text-white text-xl shadow-lg">⚡</div>
-              <div className="font-semibold text-slate-800">Масштабирование</div>
-            </div>
-            <p className="text-sm text-slate-600 leading-relaxed">От mock‑данных к БД (PostgreSQL/Prisma) без переписывания UI.</p>
+
+          <div className="text-center">
+            <div className="w-14 h-14 mx-auto rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white text-2xl shadow-lg mb-4">💬</div>
+            <h3 className="font-semibold text-slate-800 mb-2">Поддержка 24/7</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">Консультации специалистов, помощь в выборе и ответы на любые вопросы</p>
           </div>
         </div>
       </section>
