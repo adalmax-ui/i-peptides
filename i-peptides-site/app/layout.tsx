@@ -6,13 +6,13 @@ import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
-  title: "i-peptides — Store + Peptide Database",
-  description: "Blue/white scalable template: shop, database, search, cart, account.",
+  title: "i-peptides — Магазин и База Пептидов",
+  description: "Интернет-магазин пептидов с базой знаний: каталог, поиск, корзина, личный кабинет.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <body>
         <Toaster
           position="top-right"

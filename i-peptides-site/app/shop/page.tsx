@@ -38,14 +38,14 @@ export default function ShopPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold">Shop</h1>
-        <p className="mt-1 text-slate-600">Browse our collection with filters and sorting.</p>
+        <h1 className="text-2xl font-semibold">Магазин</h1>
+        <p className="mt-1 text-slate-600">Просматривайте нашу коллекцию с фильтрами и сортировкой.</p>
       </div>
 
       <div className="glass rounded-xl2 p-4 space-y-4">
         <div className="flex flex-wrap gap-4 items-center">
           <div className="flex-1 min-w-[200px]">
-            <label className="text-sm text-slate-600 mb-2 block">Category</label>
+            <label className="text-sm text-slate-600 mb-2 block">Категория</label>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
@@ -53,22 +53,22 @@ export default function ShopPage() {
             >
               {categories.map((cat) => (
                 <option key={cat} value={cat}>
-                  {cat === "all" ? "All Categories" : cat}
+                  {cat === "all" ? "Все категории" : cat}
                 </option>
               ))}
             </select>
           </div>
 
           <div className="flex-1 min-w-[200px]">
-            <label className="text-sm text-slate-600 mb-2 block">Sort By</label>
+            <label className="text-sm text-slate-600 mb-2 block">Сортировать по</label>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
               className="w-full rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-600/30"
             >
-              <option value="name">Name</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
+              <option value="name">Название</option>
+              <option value="price-asc">Цена: по возрастанию</option>
+              <option value="price-desc">Цена: по убыванию</option>
             </select>
           </div>
 
@@ -80,13 +80,13 @@ export default function ShopPage() {
                 onChange={(e) => setInStockOnly(e.target.checked)}
                 className="rounded border-slate-300 text-blue-600 focus:ring-2 focus:ring-blue-600/30"
               />
-              <span className="text-sm text-slate-700">In stock only</span>
+              <span className="text-sm text-slate-700">Только в наличии</span>
             </label>
           </div>
         </div>
 
         <div className="flex items-center gap-2 text-sm text-slate-600">
-          <span>Showing {filteredProducts.length} of {products.length} products</span>
+          <span>Показано {filteredProducts.length} из {products.length} товаров</span>
         </div>
       </div>
 
@@ -96,7 +96,7 @@ export default function ShopPage() {
 
       {filteredProducts.length === 0 && (
         <div className="glass rounded-xl2 p-8 text-center">
-          <p className="text-slate-600">No products found matching your filters.</p>
+          <p className="text-slate-600">Товары, соответствующие вашим фильтрам, не найдены.</p>
         </div>
       )}
     </div>

@@ -17,10 +17,10 @@ export function SiteHeader() {
         </Link>
 
         <nav className="ml-2 hidden items-center gap-1 md:flex">
-          <NavLink href="/shop">Shop</NavLink>
-          <NavLink href="/peptides">Peptide Database</NavLink>
-          <NavLink href="/guides">Guides</NavLink>
-          <NavLink href="/support">Support</NavLink>
+          <NavLink href="/shop">Магазин</NavLink>
+          <NavLink href="/peptides">База пептидов</NavLink>
+          <NavLink href="/guides">Руководства</NavLink>
+          <NavLink href="/support">Поддержка</NavLink>
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
@@ -29,14 +29,14 @@ export function SiteHeader() {
             className="hidden items-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm text-slate-600 hover:text-slate-900 md:flex"
           >
             <Search className="h-4 w-4" />
-            <span>Search products & peptides…</span>
+            <span>Поиск товаров и пептидов…</span>
           </Link>
 
-          <Link href="/account" className="rounded-xl p-2 hover:bg-white/60" aria-label="Account">
+          <Link href="/account" className="rounded-xl p-2 hover:bg-white/60" aria-label="Аккаунт">
             <User className="h-5 w-5 text-slate-700" />
           </Link>
 
-          <Link href="/cart" className="relative rounded-xl p-2 hover:bg-white/60" aria-label="Cart">
+          <Link href="/cart" className="relative rounded-xl p-2 hover:bg-white/60" aria-label="Корзина">
             <ShoppingBag className="h-5 w-5 text-slate-700" />
             {count > 0 && (
               <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-blue-600 px-1 text-xs text-white">
@@ -53,13 +53,13 @@ export function SiteHeader() {
           className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm text-slate-600"
         >
           <Search className="h-4 w-4" />
-          <span>Search…</span>
+          <span>Поиск…</span>
         </Link>
         <div className="mt-2 flex gap-1 overflow-x-auto">
-          <NavLink href="/shop">Shop</NavLink>
-          <NavLink href="/peptides">Database</NavLink>
-          <NavLink href="/guides">Guides</NavLink>
-          <NavLink href="/support">Support</NavLink>
+          <NavLink href="/shop">Магазин</NavLink>
+          <NavLink href="/peptides">База</NavLink>
+          <NavLink href="/guides">Гайды</NavLink>
+          <NavLink href="/support">Помощь</NavLink>
         </div>
       </div>
     </header>

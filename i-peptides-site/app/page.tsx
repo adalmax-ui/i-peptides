@@ -12,7 +12,7 @@ export default function HomePage() {
       <section className="glass rounded-xl2 p-8 md:p-10">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <Badge>Store + Database</Badge>
+            <Badge>Магазин + База знаний</Badge>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
               i-peptides — магазин и база знаний, где ничего не нужно “искать вслепую”
             </h1>
@@ -46,8 +46,8 @@ export default function HomePage() {
 
       <section className="space-y-4">
         <div className="flex items-end justify-between">
-          <h2 className="text-xl font-semibold">Featured products</h2>
-          <Link href="/shop" className="text-sm text-blue-700 hover:underline">View all</Link>
+          <h2 className="text-xl font-semibold">Популярные товары</h2>
+          <Link href="/shop" className="text-sm text-blue-700 hover:underline">Смотреть все</Link>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {featuredProducts.map((p) => <ProductCard key={p.id} p={p} />)}
@@ -56,8 +56,8 @@ export default function HomePage() {
 
       <section className="space-y-4">
         <div className="flex items-end justify-between">
-          <h2 className="text-xl font-semibold">Peptide database</h2>
-          <Link href="/peptides" className="text-sm text-blue-700 hover:underline">Browse all</Link>
+          <h2 className="text-xl font-semibold">База пептидов</h2>
+          <Link href="/peptides" className="text-sm text-blue-700 hover:underline">Посмотреть все</Link>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {featuredPeptides.map((pep) => <PeptideCard key={pep.id} pep={pep} />)}
