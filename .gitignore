@@ -1,0 +1,30 @@
+# Zip files
+*.zip
+
+# Node modules
+node_modules/
+
+# Next.js
+.next/
+
+# Build output
+out/
+build/
+
+# Environment files
+.env*.local
+.env
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Package locks
+package-lock.json
