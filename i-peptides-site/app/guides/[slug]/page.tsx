@@ -2,28 +2,28 @@ import { notFound } from "next/navigation";
 
 const guideContent: Record<string, { title: string; bullets: string[] }> = {
   "how-to-read-coa": {
-    title: "How to read a COA",
+    title: "Как читать сертификат качества (COA)",
     bullets: [
-      "Match batch/lot ID between product page and COA PDF.",
-      "Look for method, purity %, and the lab identity (and whether it is accredited).",
-      "Check dates: manufacture, test, and shelf-life windows.",
-      "Ensure the document is specific to the batch, not a generic marketing PDF.",
+      "Сверьте номер партии между страницей товара и COA документом.",
+      "Проверьте метод анализа, процент чистоты и аккредитацию лаборатории.",
+      "Проверьте даты: производство, тестирование и срок годности.",
+      "Убедитесь, что документ относится к конкретной партии, а не общий маркетинговый PDF.",
     ],
   },
   "storage-basics": {
-    title: "Storage basics",
+    title: "Основы хранения пептидов",
     bullets: [
-      "Use clear labeling: batch ID, received date, storage temp.",
-      "Avoid repeated temperature swings; define a simple routine.",
-      "Keep inventory logs for fast support and returns handling.",
+      "Используйте четкую маркировку: номер партии, дата получения, температура хранения.",
+      "Избегайте резких перепадов температуры, следуйте простой схеме хранения.",
+      "Ведите учет запасов для быстрой поддержки и обработки возвратов.",
     ],
   },
   "site-navigation": {
-    title: "How to use i-peptides",
+    title: "Как пользоваться i-peptides",
     bullets: [
-      "Start with Search if you know the name (supports aliases).",
-      "Use the Database when you want context; use the Shop when you want inventory.",
-      "From a peptide profile you can jump to linked products and comparisons.",
+      "Начните с поиска, если знаете название (поддерживаются синонимы).",
+      "Используйте базу знаний для изучения пептидов, магазин — для покупок.",
+      "Со страницы пептида можно перейти к связанным товарам и сравнениям.",
     ],
   },
 };
@@ -37,7 +37,7 @@ export default async function GuideDetail({ params }: { params: Promise<{ slug: 
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-semibold">{g.title}</h1>
-        <p className="mt-1 text-slate-600">Demo content — replace with your verified copy.</p>
+        <p className="mt-1 text-slate-600">Практическое руководство по работе с пептидами и нашим сайтом.</p>
       </div>
 
       <div className="glass rounded-xl2 p-6">

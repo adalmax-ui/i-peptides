@@ -30,24 +30,24 @@ export default function SearchPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold">Search</h1>
-        <p className="mt-1 text-slate-600">Сейчас это client‑side demo. Позже подключите индексатор (Meilisearch/Algolia) и алиасы.</p>
+        <h1 className="text-2xl font-semibold">Поиск</h1>
+        <p className="mt-1 text-slate-600">Поиск по товарам и базе знаний о пептидах. Введите название, категорию или ключевые слова.</p>
       </div>
 
       <div className="glass rounded-xl2 p-4">
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Type: BPC, GLP-1, storage, kit…"
+          placeholder="Например: BPC, GLP-1, восстановление, набор…"
           className="w-full rounded-xl border border-slate-200 bg-white/70 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-600/30"
         />
-        <div className="mt-2 text-xs text-slate-500">Tip: search should support synonyms/aliases and typo tolerance.</div>
+        <div className="mt-2 text-xs text-slate-500">Поиск работает по названиям, синонимам и категориям товаров</div>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="font-semibold">Products</h2>
+            <h2 className="font-semibold">Товары</h2>
             <Badge>{res.products.length}</Badge>
           </div>
           <div className="space-y-2">
@@ -57,13 +57,13 @@ export default function SearchPage() {
                 <div className="mt-1 text-sm text-slate-600">{p.short}</div>
               </Link>
             ))}
-            {q && res.products.length === 0 && <div className="text-sm text-slate-600">No product matches.</div>}
+            {q && res.products.length === 0 && <div className="text-sm text-slate-600">Товары не найдены</div>}
           </div>
         </div>
 
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="font-semibold">Peptides</h2>
+            <h2 className="font-semibold">Пептиды</h2>
             <Badge>{res.peptides.length}</Badge>
           </div>
           <div className="space-y-2">
@@ -73,7 +73,7 @@ export default function SearchPage() {
                 <div className="mt-1 text-sm text-slate-600">{pep.summary}</div>
               </Link>
             ))}
-            {q && res.peptides.length === 0 && <div className="text-sm text-slate-600">No peptide matches.</div>}
+            {q && res.peptides.length === 0 && <div className="text-sm text-slate-600">Пептиды не найдены</div>}
           </div>
         </div>
       </div>
