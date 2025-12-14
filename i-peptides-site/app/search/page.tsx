@@ -4,21 +4,25 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { peptides, products } from "@/lib/data";
 import { Badge } from "@/components/ui";
+import { Search as SearchIcon } from "lucide-react";
 
 export default function SearchPage() {
   const [q, setQ] = useState("");
+  const [filter, setFilter] = useState<"all" | "products" | "peptides">("all");
 
   const res = useMemo(() => {
     const query = q.trim().toLowerCase();
     if (!query) return { products: [], peptides: [] };
 
-    const p = products.filter((x) =>
-      [x.title, x.short, x.category, x.tags.join(" ")].join(" ").toLowerCase().includes(query)
-    );
+    const p = products.filter((x) => {
+      const searchText = [x.title, x.short, x.category, x.tags.join(" ")].join(" ").toLowerCase();
+      return searchText.includes(query) || query.split(" ").some(term => searchText.includes(term));
+    });
 
-    const pep = peptides.filter((x) =>
-      [x.name, x.aka.join(" "), x.category, x.summary].join(" ").toLowerCase().includes(query)
-    );
+    const pep = peptides.filter((x) => {
+      const searchText = [x.name, x.aka.join(" "), x.category, x.summary].join(" ").toLowerCase();
+      return searchText.includes(query) || query.split(" ").some(term => searchText.includes(term));
+    });
 
     return { products: p, peptides: pep };
   }, [q]);
