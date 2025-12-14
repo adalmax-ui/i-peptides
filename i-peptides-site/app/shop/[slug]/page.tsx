@@ -1,9 +1,43 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { Badge } from "@/components/ui";
 import { products, peptides } from "@/lib/data";
 import { AddToCart } from "./ui.client";
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const p = products.find((x) => x.slug === params.slug);
+
+  if (!p) {
+    return {
+      title: "Product Not Found",
+    };
+  }
+
+  return {
+    title: `${p.title} | i-peptides`,
+    description: p.short,
+    openGraph: {
+      title: p.title,
+      description: p.short,
+      images: [{ url: p.image, width: 1200, height: 900, alt: p.title }],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: p.title,
+      description: p.short,
+      images: [p.image],
+    },
+  };
+}
+
+export async function generateStaticParams() {
+  return products.map((p) => ({
+    slug: p.slug,
+  }));
+}
 
 export default function ProductDetail({ params }: { params: { slug: string } }) {
   const p = products.find((x) => x.slug === params.slug);

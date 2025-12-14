@@ -1,8 +1,41 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { Badge } from "@/components/ui";
 import { peptides, products } from "@/lib/data";
 import { ProductCard } from "@/components/Cards";
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const pep = peptides.find((x) => x.slug === params.slug);
+
+  if (!pep) {
+    return {
+      title: "Peptide Not Found",
+    };
+  }
+
+  return {
+    title: `${pep.name} | Peptide Database | i-peptides`,
+    description: pep.summary,
+    keywords: [pep.name, ...pep.aka, pep.category, "peptide", "research"].join(", "),
+    openGraph: {
+      title: `${pep.name} - ${pep.category}`,
+      description: pep.summary,
+      type: "article",
+    },
+    twitter: {
+      card: "summary",
+      title: `${pep.name} - ${pep.category}`,
+      description: pep.summary,
+    },
+  };
+}
+
+export async function generateStaticParams() {
+  return peptides.map((p) => ({
+    slug: p.slug,
+  }));
+}
 
 export default function PeptideDetail({ params }: { params: { slug: string } }) {
   const pep = peptides.find((x) => x.slug === params.slug);

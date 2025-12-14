@@ -5,9 +5,15 @@ import Link from "next/link";
 import { Badge, Button } from "./ui";
 import type { Peptide, Product } from "@/lib/types";
 import { useCart } from "@/lib/cart";
+import toast from "react-hot-toast";
 
 export function ProductCard({ p }: { p: Product }) {
   const add = useCart((s) => s.add);
+
+  const handleAddToCart = () => {
+    add(p.id, 1);
+    toast.success(`Added ${p.title} to cart!`);
+  };
 
   return (
     <div className="glass rounded-xl2 overflow-hidden">
@@ -33,7 +39,7 @@ export function ProductCard({ p }: { p: Product }) {
             {!p.inStock && <span className="ml-2 text-xs text-slate-500">(out of stock)</span>}
           </div>
 
-          <Button onClick={() => add(p.id, 1)} disabled={!p.inStock}>
+          <Button onClick={handleAddToCart} disabled={!p.inStock}>
             Add to cart
           </Button>
         </div>
