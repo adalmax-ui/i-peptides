@@ -6,8 +6,9 @@ import { Badge } from "@/components/ui";
 import { products, peptides } from "@/lib/data";
 import { AddToCart } from "./ui.client";
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const p = products.find((x) => x.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const p = products.find((x) => x.slug === slug);
 
   if (!p) {
     return {
@@ -39,8 +40,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProductDetail({ params }: { params: { slug: string } }) {
-  const p = products.find((x) => x.slug === params.slug);
+export default async function ProductDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const p = products.find((x) => x.slug === slug);
   if (!p) return notFound();
 
   const peptide = p.peptideSlug ? peptides.find((x) => x.slug === p.peptideSlug) : null;

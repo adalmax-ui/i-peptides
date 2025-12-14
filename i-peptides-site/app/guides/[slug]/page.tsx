@@ -28,8 +28,9 @@ const guideContent: Record<string, { title: string; bullets: string[] }> = {
   },
 };
 
-export default function GuideDetail({ params }: { params: { slug: string } }) {
-  const g = guideContent[params.slug];
+export default async function GuideDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const g = guideContent[slug];
   if (!g) return notFound();
 
   return (

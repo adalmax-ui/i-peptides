@@ -5,8 +5,9 @@ import { Badge } from "@/components/ui";
 import { peptides, products } from "@/lib/data";
 import { ProductCard } from "@/components/Cards";
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const pep = peptides.find((x) => x.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const pep = peptides.find((x) => x.slug === slug);
 
   if (!pep) {
     return {
@@ -37,8 +38,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function PeptideDetail({ params }: { params: { slug: string } }) {
-  const pep = peptides.find((x) => x.slug === params.slug);
+export default async function PeptideDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const pep = peptides.find((x) => x.slug === slug);
   if (!pep) return notFound();
 
   const linkedProducts = products.filter((p) => p.peptideSlug === pep.slug);
