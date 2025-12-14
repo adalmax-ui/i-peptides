@@ -40,15 +40,15 @@ export function ProductCard({ p }: { p: Product }) {
 
         {/* Метка Premium */}
         {p.tags.includes('premium') && (
-          <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 text-white text-xs font-bold shadow-lg backdrop-blur-sm">
+          <div className="absolute top-3 right-3 px-4 py-1.5 rounded-lg bg-gradient-to-r from-amber-500 to-orange-600 text-white text-xs font-bold shadow-lg backdrop-blur-sm tracking-wide">
             PREMIUM
           </div>
         )}
 
         {/* Метка популярное */}
         {p.tags.includes('популярное') && (
-          <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-gradient-to-r from-rose-400 to-pink-500 text-white text-xs font-bold shadow-lg backdrop-blur-sm">
-            ⭐ Хит продаж
+          <div className="absolute top-3 left-3 px-4 py-1.5 rounded-lg bg-gradient-to-r from-rose-500 to-pink-600 text-white text-xs font-bold shadow-lg backdrop-blur-sm tracking-wide">
+            ХИТ ПРОДАЖ
           </div>
         )}
       </div>
