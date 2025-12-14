@@ -9,8 +9,9 @@ export default function HomePage() {
 
   return (
     <div className="space-y-10">
-      <section className="glass rounded-xl2 p-8 md:p-10">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      {/* Hero секция с градиентом */}
+      <section className="relative overflow-hidden glass rounded-xl2 p-8 md:p-10 before:absolute before:inset-0 before:bg-gradient-to-br before:from-blue-50/50 before:via-transparent before:to-purple-50/30 before:rounded-xl2 before:pointer-events-none">
+        <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <Badge>Магазин + База знаний</Badge>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
@@ -28,18 +29,27 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          <div className="glass rounded-xl2 p-4">
-            <div className="font-semibold">Глобальный поиск</div>
-            <p className="mt-1 text-sm text-slate-600">По товарам, пептидам и гайдам — с подсказками и алиасами.</p>
+        <div className="relative z-10 mt-8 grid gap-4 md:grid-cols-3">
+          <div className="glass rounded-xl2 p-5 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-blue-100/50">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-xl shadow-lg">🔍</div>
+              <div className="font-semibold text-slate-800">Глобальный поиск</div>
+            </div>
+            <p className="text-sm text-slate-600 leading-relaxed">По товарам, пептидам и гайдам — с подсказками и алиасами.</p>
           </div>
-          <div className="glass rounded-xl2 p-4">
-            <div className="font-semibold">Схема “не блуждать”</div>
-            <p className="mt-1 text-sm text-slate-600">Категории + теги + “Related” блоки + сравнения.</p>
+          <div className="glass rounded-xl2 p-5 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-purple-100/50">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white text-xl shadow-lg">🗺️</div>
+              <div className="font-semibold text-slate-800">Удобная навигация</div>
+            </div>
+            <p className="text-sm text-slate-600 leading-relaxed">Категории + теги + "Related" блоки + сравнения.</p>
           </div>
-          <div className="glass rounded-xl2 p-4">
-            <div className="font-semibold">Масштабирование</div>
-            <p className="mt-1 text-sm text-slate-600">От mock‑данных к БД (PostgreSQL/Prisma) без переписывания UI.</p>
+          <div className="glass rounded-xl2 p-5 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-indigo-100/50">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center text-white text-xl shadow-lg">⚡</div>
+              <div className="font-semibold text-slate-800">Масштабирование</div>
+            </div>
+            <p className="text-sm text-slate-600 leading-relaxed">От mock‑данных к БД (PostgreSQL/Prisma) без переписывания UI.</p>
           </div>
         </div>
       </section>
