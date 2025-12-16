@@ -19,9 +19,12 @@ export type Peptide = {
   slug: string;
   name: string;
   aka: string[];
-  category: string; // e.g. Repair, Metabolic, Cosmetic, Neuro, etc.
+  category: string;
   summary: string;
   researchStatus: "Preclinical" | "Early clinical" | "Clinical" | "Approved drug (context-specific)";
   keyPoints: string[];
   safetyNotes: string[];
+  mechanismOfAction?: string; // подробное описание механизма действия
+  applications?: string[]; // области применения
+  researchHistory?: string; // история и контекст исследований
 };

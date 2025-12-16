@@ -11,14 +11,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!pep) {
     return {
-      title: "Peptide Not Found",
+      title: "Пептид не найден",
     };
   }
 
   return {
-    title: `${pep.name} | Peptide Database | i-peptides`,
+    title: `${pep.name} | База знаний пептидов | i-peptides`,
     description: pep.summary,
-    keywords: [pep.name, ...pep.aka, pep.category, "peptide", "research"].join(", "),
+    keywords: [pep.name, ...pep.aka, pep.category, "пептид", "исследования", "пептиды"].join(", "),
     openGraph: {
       title: `${pep.name} - ${pep.category}`,
       description: pep.summary,
@@ -50,40 +50,88 @@ export default async function PeptideDetail({ params }: { params: Promise<{ slug
       <div className="glass rounded-xl2 p-8">
         <div className="flex flex-wrap gap-2">
           <Badge>{pep.category}</Badge>
-          <Badge>Status: {pep.researchStatus}</Badge>
-          {pep.aka.map((a) => <Badge key={a}>AKA: {a}</Badge>)}
+          <Badge>Статус: {pep.researchStatus}</Badge>
+          {pep.aka.map((a) => <Badge key={a}>Также: {a}</Badge>)}
         </div>
 
-        <h1 className="mt-4 text-2xl font-semibold">{pep.name}</h1>
-        <p className="mt-2 text-slate-600">{pep.summary}</p>
+        <h1 className="mt-4 text-3xl font-bold text-slate-900">{pep.name}</h1>
+        <p className="mt-3 text-lg text-slate-600 leading-relaxed">{pep.summary}</p>
 
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
+        <div className="mt-8 space-y-8">
+          {/* История исследований */}
+          {pep.researchHistory && (
+            <div className="p-5 rounded-xl bg-slate-50 border border-slate-200">
+              <div className="text-lg font-semibold text-slate-900 mb-3">📚 История исследований</div>
+              <p className="text-slate-700 leading-relaxed">{pep.researchHistory}</p>
+            </div>
+          )}
+
+          {/* Механизм действия */}
+          {pep.mechanismOfAction && (
+            <div>
+              <div className="text-xl font-semibold text-slate-900 mb-3">⚙️ Механизм действия</div>
+              <p className="text-slate-700 leading-relaxed whitespace-pre-line">{pep.mechanismOfAction}</p>
+            </div>
+          )}
+
+          {/* Области применения */}
+          {pep.applications && pep.applications.length > 0 && (
+            <div>
+              <div className="text-xl font-semibold text-slate-900 mb-3">🎯 Области применения</div>
+              <div className="grid md:grid-cols-2 gap-3">
+                {pep.applications.map((app) => (
+                  <div key={app} className="flex items-start gap-2 p-3 rounded-lg bg-blue-50 border border-blue-100">
+                    <span className="text-blue-600 font-bold">→</span>
+                    <span className="text-slate-700">{app}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Ключевые результаты */}
           <div>
-            <div className="font-semibold">Key points</div>
-            <ul className="mt-2 list-disc space-y-2 pl-5 text-sm text-slate-600">
-              {pep.keyPoints.map((x) => <li key={x}>{x}</li>)}
+            <div className="text-xl font-semibold text-slate-900 mb-3">✨ Ключевые результаты исследований</div>
+            <ul className="space-y-3">
+              {pep.keyPoints.map((x) => (
+                <li key={x} className="flex items-start gap-3">
+                  <span className="text-blue-500 text-lg mt-1">•</span>
+                  <span className="text-slate-700 leading-relaxed">{x}</span>
+                </li>
+              ))}
             </ul>
           </div>
-          <div>
-            <div className="font-semibold">Safety notes</div>
-            <ul className="mt-2 list-disc space-y-2 pl-5 text-sm text-slate-600">
-              {pep.safetyNotes.map((x) => <li key={x}>{x}</li>)}
-            </ul>
-            <Link href="/legal/disclaimer" className="mt-3 inline-block text-sm text-blue-700 hover:underline">
-              Read disclaimer →
-            </Link>
+
+          {/* Дисклеймер */}
+          <div className="mt-8 p-6 rounded-xl border-2 border-amber-200 bg-amber-50/50">
+            <div className="flex items-start gap-3">
+              <div className="text-2xl">⚠️</div>
+              <div>
+                <div className="font-bold text-amber-900 mb-2">Важная информация</div>
+                <p className="text-sm text-amber-800 leading-relaxed">
+                  Информация на этой странице предоставлена исключительно в образовательных целях.
+                  Описанные пептиды не являются лекарственными средствами и не предназначены для
+                  диагностики, лечения или профилактики каких-либо заболеваний. Перед применением
+                  любых пептидов обязательно проконсультируйтесь с квалифицированным врачом или
+                  специалистом в области здравоохранения. Результаты исследований могут варьироваться
+                  в зависимости от индивидуальных особенностей организма.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <section className="space-y-4">
         <div className="flex items-end justify-between">
-          <h2 className="text-xl font-semibold">Products linked to this peptide</h2>
-          <Link href="/shop" className="text-sm text-blue-700 hover:underline">Go to shop</Link>
+          <h2 className="text-2xl font-semibold">Товары с этим пептидом</h2>
+          <Link href="/shop" className="text-sm text-blue-700 hover:underline">Смотреть все →</Link>
         </div>
 
         {linkedProducts.length === 0 ? (
-          <p className="text-slate-600">No products linked yet. Add mappings in the database later.</p>
+          <div className="glass rounded-xl2 p-6 text-center text-slate-600">
+            Товары с этим пептидом появятся в ближайшее время
+          </div>
         ) : (
           <div className="grid gap-4 md:grid-cols-3">
             {linkedProducts.map((p) => <ProductCard key={p.id} p={p} />)}
