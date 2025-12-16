@@ -4,7 +4,7 @@ export type Product = {
   title: string;
   short: string;
   priceCents: number;
-  currency: "EUR" | "USD";
+  currency: "EUR" | "USD" | "RUB";
   image: string;
   category: string;
   peptideSlug?: string; // optional link into the database
