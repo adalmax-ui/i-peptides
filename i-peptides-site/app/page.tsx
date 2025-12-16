@@ -39,7 +39,7 @@ export default function HomePage() {
               Качество,<br />которому доверяют
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed">
-              Пептиды с чистотой >98% для спорта и здоровья. Все товары в наличии, отправка в день заказа.
+              Пептиды с чистотой &gt;98% для спорта и здоровья. Все товары в наличии, отправка в день заказа.
             </p>
 
             <div className="flex flex-wrap gap-4">
