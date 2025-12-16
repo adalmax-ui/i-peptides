@@ -45,6 +45,17 @@ export default async function PeptideDetail({ params }: { params: Promise<{ slug
 
   const linkedProducts = products.filter((p) => p.peptideSlug === pep.slug);
 
+  // Функция для парсинга текста с **жирным** форматированием
+  const parseFormattedText = (text: string) => {
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, idx) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={idx}>{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+  };
+
   return (
     <div className="space-y-8">
       <div className="glass rounded-xl2 p-8">
@@ -61,7 +72,7 @@ export default async function PeptideDetail({ params }: { params: Promise<{ slug
           {/* История исследований */}
           {pep.researchHistory && (
             <div className="p-5 rounded-xl bg-slate-50 border border-slate-200">
-              <div className="text-lg font-semibold text-slate-900 mb-3">📚 История исследований</div>
+              <div className="text-lg font-semibold text-slate-900 mb-3">История исследований</div>
               <p className="text-slate-700 leading-relaxed">{pep.researchHistory}</p>
             </div>
           )}
@@ -69,15 +80,19 @@ export default async function PeptideDetail({ params }: { params: Promise<{ slug
           {/* Механизм действия */}
           {pep.mechanismOfAction && (
             <div>
-              <div className="text-xl font-semibold text-slate-900 mb-3">⚙️ Механизм действия</div>
-              <p className="text-slate-700 leading-relaxed whitespace-pre-line">{pep.mechanismOfAction}</p>
+              <div className="text-xl font-semibold text-slate-900 mb-3">Механизм действия</div>
+              <div className="text-slate-700 leading-relaxed space-y-3">
+                {pep.mechanismOfAction.split('\n').map((line, idx) => (
+                  <div key={idx}>{parseFormattedText(line)}</div>
+                ))}
+              </div>
             </div>
           )}
 
           {/* Области применения */}
           {pep.applications && pep.applications.length > 0 && (
             <div>
-              <div className="text-xl font-semibold text-slate-900 mb-3">🎯 Области применения</div>
+              <div className="text-xl font-semibold text-slate-900 mb-3">Области применения</div>
               <div className="grid md:grid-cols-2 gap-3">
                 {pep.applications.map((app) => (
                   <div key={app} className="flex items-start gap-2 p-3 rounded-lg bg-blue-50 border border-blue-100">
@@ -91,7 +106,7 @@ export default async function PeptideDetail({ params }: { params: Promise<{ slug
 
           {/* Ключевые результаты */}
           <div>
-            <div className="text-xl font-semibold text-slate-900 mb-3">✨ Ключевые результаты исследований</div>
+            <div className="text-xl font-semibold text-slate-900 mb-3">Ключевые результаты исследований</div>
             <ul className="space-y-3">
               {pep.keyPoints.map((x) => (
                 <li key={x} className="flex items-start gap-3">
@@ -122,22 +137,18 @@ export default async function PeptideDetail({ params }: { params: Promise<{ slug
         </div>
       </div>
 
-      <section className="space-y-4">
-        <div className="flex items-end justify-between">
-          <h2 className="text-2xl font-semibold">Товары с этим пептидом</h2>
-          <Link href="/shop" className="text-sm text-blue-700 hover:underline">Смотреть все →</Link>
-        </div>
-
-        {linkedProducts.length === 0 ? (
-          <div className="glass rounded-xl2 p-6 text-center text-slate-600">
-            Товары с этим пептидом появятся в ближайшее время
+      {linkedProducts.length > 0 && (
+        <section className="space-y-4">
+          <div className="flex items-end justify-between">
+            <h2 className="text-2xl font-semibold">Товары с этим пептидом</h2>
+            <Link href="/shop" className="text-sm text-blue-700 hover:underline">Смотреть все →</Link>
           </div>
-        ) : (
+
           <div className="grid gap-4 md:grid-cols-3">
             {linkedProducts.map((p) => <ProductCard key={p.id} p={p} />)}
           </div>
-        )}
-      </section>
+        </section>
+      )}
     </div>
   );
 }
