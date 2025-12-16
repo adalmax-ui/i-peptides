@@ -31,12 +31,12 @@ export const peptides: Peptide[] = [
     researchStatus: "Early clinical",
     keyPoints: [
       "Frequently grouped with other GH-axis research compounds",
-      "Users typically want fast access to "what it is / what it's used for in studies / what to watch out for"",
+      "Users typically want fast access to 'what it is / what it's used for in studies / what to watch out for'",
       "Good candidate for cross-links: related peptides, comparisons, and product variants",
     ],
     safetyNotes: [
       "Keep regulatory/compliance copy clear; do not frame as treatment",
-      "Prominent "educational" and "consult a professional" messaging is recommended",
+      "Prominent 'educational' and 'consult a professional' messaging is recommended",
     ],
   },
   {
@@ -51,7 +51,7 @@ export const peptides: Peptide[] = [
     keyPoints: [
       "Clear separation of education vs. commerce is essential for trust and compliance",
       "Users will search synonyms and brand terms; alias handling matters",
-      "A strong "status" badge reduces confusion (approved vs experimental)",
+      "A strong 'status' badge reduces confusion (approved vs experimental)",
     ],
     safetyNotes: [
       "Do not provide medical advice or dosing; route people to clinicians",
