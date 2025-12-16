@@ -3,6 +3,8 @@ export type Product = {
   slug: string;
   title: string;
   short: string;
+  description?: string; // полное описание товара
+  benefits?: string[]; // короткие преимущества (3-4 штуки)
   priceCents: number;
   currency: "EUR" | "USD" | "RUB";
   image: string;

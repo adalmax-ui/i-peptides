@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <div className="space-y-16">
       {/* Hero с фоном */}
-      <section className="relative overflow-hidden rounded-3xl h-[600px] md:h-[700px]">
+      <section className="relative overflow-hidden rounded-3xl h-[400px] md:h-[480px]">
         {/* Фоновое изображение */}
         <div className="absolute inset-0">
           <Image
@@ -30,26 +30,26 @@ export default function HomePage() {
         </div>
 
         <div className="relative z-10 px-6 h-full flex items-center">
-          <div className="max-w-2xl">
-            <div className="inline-block px-4 py-2 rounded-full bg-white/10 backdrop-blur-md text-white text-sm font-semibold border border-white/20 mb-6">
+          <div className="max-w-xl">
+            <div className="inline-block px-4 py-2 rounded-full bg-white/10 backdrop-blur-md text-white text-sm font-semibold border border-white/20 mb-4">
               Сертифицированные пептиды премиум класса
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
               Качество,<br />которому доверяют
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed">
+            <p className="text-lg md:text-xl text-white/90 mb-6 leading-relaxed">
               Пептиды с чистотой &gt;98% для спорта и здоровья. Все товары в наличии, отправка в день заказа.
             </p>
 
             <div className="flex flex-wrap gap-4">
               <Link href="/shop">
-                <Button className="px-10 py-6 text-lg bg-white text-blue-600 hover:bg-blue-50 shadow-2xl hover:shadow-white/20 transition-all duration-300 hover:scale-105">
+                <Button className="px-8 py-4 text-base bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105 font-semibold">
                   Смотреть товары
                 </Button>
               </Link>
               <Link href="/peptides">
-                <Button variant="ghost" className="px-10 py-6 text-lg text-white border-2 border-white/30 hover:bg-white/10 backdrop-blur-sm transition-all duration-300">
+                <Button variant="ghost" className="px-8 py-4 text-base text-white border-2 border-white/30 hover:bg-white/10 backdrop-blur-sm transition-all duration-300 font-semibold">
                   База знаний
                 </Button>
               </Link>

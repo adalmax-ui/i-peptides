@@ -62,6 +62,18 @@ export function ProductCard({ p }: { p: Product }) {
           <p className="mt-2 text-sm text-slate-600 line-clamp-2 leading-relaxed">{p.short}</p>
         </div>
 
+        {/* Преимущества */}
+        {p.benefits && p.benefits.length > 0 && (
+          <div className="mb-3 space-y-1">
+            {p.benefits.map((benefit, idx) => (
+              <div key={idx} className="flex items-start gap-2 text-xs text-slate-600">
+                <span className="text-blue-500 mt-0.5">✓</span>
+                <span className="leading-relaxed">{benefit}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
         <div className="flex items-center gap-2 mb-4">
           <span className="px-2 py-1 rounded-lg bg-blue-50 text-blue-700 text-xs font-medium">
             {p.category}
@@ -81,7 +93,7 @@ export function ProductCard({ p }: { p: Product }) {
         <div className="flex items-center justify-between gap-3 pt-3 border-t border-slate-100">
           <div className="flex flex-col">
             <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              {(p.priceCents / 100).toFixed(0)}€
+              {(p.priceCents / 100).toFixed(0)}{p.currency === "RUB" ? "₽" : p.currency === "USD" ? "$" : "€"}
             </span>
           </div>
 
