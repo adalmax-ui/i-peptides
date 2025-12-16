@@ -62,16 +62,6 @@ export function ProductCard({ p }: { p: Product }) {
           <p className="mt-2 text-sm text-slate-600 line-clamp-2 leading-relaxed">{p.short}</p>
         </div>
 
-        {/* Описание действия */}
-        {p.description && (
-          <div className="mb-3 p-3 rounded-lg bg-blue-50/50 border border-blue-100">
-            <div className="text-xs font-semibold text-blue-700 mb-1">Как работает:</div>
-            <p className="text-xs text-slate-700 leading-relaxed line-clamp-3">
-              {p.description}
-            </p>
-          </div>
-        )}
-
         {/* Преимущества */}
         {p.benefits && p.benefits.length > 0 && (
           <div className="mb-3 space-y-1">
