@@ -7,27 +7,13 @@ import { useState, useMemo } from "react";
 export default function ShopPage() {
   const [category, setCategory] = useState<string>("all");
   const [inStockOnly, setInStockOnly] = useState(false);
-  const [sortBy, setSortBy] = useState<"name" | "price-asc" | "price-desc">("name");
+  const [sortBy, setSortBy] = useState<"name" | "price-asc" | "price-desc" | "rating-desc" | "rating-asc">("name");
   const [searchQuery, setSearchQuery] = useState("");
 
   const categories = useMemo(() => {
     const cats = new Set(products.map((p) => p.category));
     return ["all", ...Array.from(cats)];
   }, []);
-
-  const categoryColors: Record<string, string> = {
-    "all": "bg-gradient-to-br from-slate-400 to-slate-500",
-    "Метаболизм": "bg-gradient-to-br from-yellow-400 to-orange-500",
-    "Жиросжигание": "bg-gradient-to-br from-red-400 to-pink-500",
-    "Гормон роста": "bg-gradient-to-br from-green-400 to-emerald-500",
-    "Иммунитет": "bg-gradient-to-br from-blue-400 to-cyan-500",
-    "Омоложение": "bg-gradient-to-br from-purple-400 to-pink-500",
-    "Anti-age": "bg-gradient-to-br from-violet-400 to-purple-500",
-    "Регенерация": "bg-gradient-to-br from-teal-400 to-green-500",
-    "Энергия": "bg-gradient-to-br from-amber-400 to-yellow-500",
-    "Либидо": "bg-gradient-to-br from-rose-400 to-red-500",
-    "Нейропептиды": "bg-gradient-to-br from-indigo-400 to-blue-500",
-  };
 
   const filteredProducts = useMemo(() => {
     let filtered = products;
@@ -52,6 +38,8 @@ export default function ShopPage() {
       if (sortBy === "name") return a.title.localeCompare(b.title);
       if (sortBy === "price-asc") return a.priceCents - b.priceCents;
       if (sortBy === "price-desc") return b.priceCents - a.priceCents;
+      if (sortBy === "rating-desc") return (b.rating || 0) - (a.rating || 0);
+      if (sortBy === "rating-asc") return (a.rating || 0) - (b.rating || 0);
       return 0;
     });
 
@@ -97,7 +85,7 @@ export default function ShopPage() {
               {/* Поиск */}
               <div>
                 <label className="text-sm font-semibold text-slate-700 mb-2 block">
-                  Поиск по названию
+                  Поиск
                 </label>
                 <div className="relative">
                   <input
@@ -113,6 +101,43 @@ export default function ShopPage() {
                 </div>
               </div>
 
+              {/* Сортировка */}
+              <div>
+                <label className="text-sm font-semibold text-slate-700 mb-2 block">
+                  Сортировка
+                </label>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as any)}
+                  className="w-full rounded-xl border border-slate-200 bg-white/70 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-300 transition-all"
+                >
+                  <option value="name">По названию</option>
+                  <option value="price-asc">Цена: от меньшей</option>
+                  <option value="price-desc">Цена: от большей</option>
+                  <option value="rating-desc">Рейтинг: высокий</option>
+                  <option value="rating-asc">Рейтинг: низкий</option>
+                </select>
+              </div>
+
+              {/* Разделитель */}
+              <div className="border-t border-slate-200" />
+
+              {/* Наличие */}
+              <div>
+                <label className="text-sm font-semibold text-slate-700 mb-3 block">
+                  Доступность
+                </label>
+                <label className="flex items-center gap-3 cursor-pointer p-3 rounded-xl hover:bg-white/50 transition-all">
+                  <input
+                    type="checkbox"
+                    checked={inStockOnly}
+                    onChange={(e) => setInStockOnly(e.target.checked)}
+                    className="w-5 h-5 rounded border-slate-300 text-purple-600 focus:ring-2 focus:ring-purple-500/30"
+                  />
+                  <span className="text-sm font-medium text-slate-700">Только в наличии</span>
+                </label>
+              </div>
+
               {/* Категории */}
               <div>
                 <label className="text-sm font-semibold text-slate-700 mb-3 block">
@@ -121,7 +146,6 @@ export default function ShopPage() {
                 <div className="space-y-2">
                   {categories.map((cat) => {
                     const isActive = category === cat;
-                    const colorClass = categoryColors[cat] || "bg-gradient-to-br from-slate-400 to-slate-500";
                     const productCount = cat === "all"
                       ? products.length
                       : products.filter(p => p.category === cat).length;
@@ -132,18 +156,15 @@ export default function ShopPage() {
                         onClick={() => setCategory(cat)}
                         className={`w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-left transition-all ${
                           isActive
-                            ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md"
-                            : "bg-white/50 hover:bg-white/80 text-slate-700 hover:shadow-sm"
+                            ? "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white shadow-md"
+                            : "bg-white/50 hover:bg-white/80 text-slate-700 hover:shadow-sm border border-slate-200/50"
                         }`}
                       >
-                        <span className="flex items-center gap-2.5">
-                          <span className={`w-2.5 h-2.5 rounded-full ${isActive ? 'bg-white' : colorClass} flex-shrink-0`} />
-                          <span className="text-sm font-medium">
-                            {cat === "all" ? "Все категории" : cat}
-                          </span>
+                        <span className="text-sm font-medium">
+                          {cat === "all" ? "Все категории" : cat}
                         </span>
-                        <span className={`text-xs px-2 py-0.5 rounded-full ${
-                          isActive ? "bg-white/20" : "bg-slate-200"
+                        <span className={`text-xs px-2 py-0.5 rounded-full font-semibold ${
+                          isActive ? "bg-white/20 text-white" : "bg-slate-200 text-slate-600"
                         }`}>
                           {productCount}
                         </span>
@@ -151,35 +172,6 @@ export default function ShopPage() {
                     );
                   })}
                 </div>
-              </div>
-
-              {/* Сортировка */}
-              <div>
-                <label className="text-sm font-semibold text-slate-700 mb-2 block">
-                  Сортировать по
-                </label>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as any)}
-                  className="w-full rounded-xl border border-slate-200 bg-white/70 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-300 transition-all"
-                >
-                  <option value="name">Название (А-Я)</option>
-                  <option value="price-asc">Цена: дешевле</option>
-                  <option value="price-desc">Цена: дороже</option>
-                </select>
-              </div>
-
-              {/* Наличие */}
-              <div>
-                <label className="flex items-center gap-3 cursor-pointer p-3 rounded-xl hover:bg-white/50 transition-all">
-                  <input
-                    type="checkbox"
-                    checked={inStockOnly}
-                    onChange={(e) => setInStockOnly(e.target.checked)}
-                    className="w-5 h-5 rounded border-slate-300 text-purple-600 focus:ring-2 focus:ring-purple-500/30"
-                  />
-                  <span className="text-sm font-medium text-slate-700">Только в наличии</span>
-                </label>
               </div>
 
               {/* Счетчик результатов */}

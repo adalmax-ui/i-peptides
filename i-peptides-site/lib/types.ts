@@ -12,6 +12,7 @@ export type Product = {
   peptideSlug?: string; // optional link into the database
   tags: string[];
   inStock: boolean;
+  rating?: number; // рейтинг от 1 до 5
 };
 
 export type Peptide = {

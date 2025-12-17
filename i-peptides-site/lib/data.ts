@@ -726,6 +726,7 @@ export const products: Product[] = [
     peptideSlug: "tirzepatide",
     tags: ["снижение веса", "аппетит", "популярное"],
     inStock: true,
+    rating: 4.8,
   },
   {
     id: "prd_002",
@@ -746,6 +747,7 @@ export const products: Product[] = [
     peptideSlug: "tirzepatide",
     tags: ["снижение веса", "аппетит", "premium"],
     inStock: true,
+    rating: 4.7,
   },
   {
     id: "prd_003",
@@ -765,6 +767,7 @@ export const products: Product[] = [
     peptideSlug: "retatrutide",
     tags: ["снижение веса", "инсулин", "популярное"],
     inStock: true,
+    rating: 4.6,
   },
   {
     id: "prd_004",
@@ -785,6 +788,7 @@ export const products: Product[] = [
     peptideSlug: "aod9604",
     tags: ["жиросжигание", "метаболизм", "безопасность"],
     inStock: true,
+    rating: 4.5,
   },
 
   // Рост и восстановление
@@ -807,6 +811,7 @@ export const products: Product[] = [
     peptideSlug: "ipamorelin",
     tags: ["рост", "сон", "популярное", "premium"],
     inStock: true,
+    rating: 4.9,
   },
 
   // Иммунитет
@@ -828,6 +833,7 @@ export const products: Product[] = [
     peptideSlug: "thymosin-alpha-1",
     tags: ["иммунитет", "детоксикация", "противовирусное"],
     inStock: true,
+    rating: 4.7,
   },
 
   // Омоложение и кожа
@@ -850,6 +856,7 @@ export const products: Product[] = [
     peptideSlug: "glow-complex",
     tags: ["кожа", "коллаген", "популярное", "premium"],
     inStock: true,
+    rating: 4.8,
   },
   {
     id: "prd_008",
@@ -870,6 +877,7 @@ export const products: Product[] = [
     peptideSlug: "ghk-cu",
     tags: ["кожа", "коллаген", "заживление"],
     inStock: true,
+    rating: 4.6,
   },
   {
     id: "prd_009",
@@ -889,6 +897,7 @@ export const products: Product[] = [
     peptideSlug: "epithalon",
     tags: ["anti-age", "сон", "гормоны"],
     inStock: true,
+    rating: 4.7,
   },
 
   // Регенерация
@@ -911,6 +920,7 @@ export const products: Product[] = [
     peptideSlug: "bpc-157",
     tags: ["восстановление", "жкт", "популярное", "premium"],
     inStock: true,
+    rating: 4.5,
   },
   {
     id: "prd_011",
@@ -931,6 +941,7 @@ export const products: Product[] = [
     peptideSlug: "bpc-157",
     tags: ["восстановление", "травмы", "комбо", "premium"],
     inStock: true,
+    rating: 4.6,
   },
   {
     id: "prd_012",
@@ -950,6 +961,7 @@ export const products: Product[] = [
     peptideSlug: "tb-500",
     tags: ["восстановление", "суставы", "спорт"],
     inStock: true,
+    rating: 4.4,
   },
 
   // Энергия и метаболизм
@@ -972,6 +984,7 @@ export const products: Product[] = [
     peptideSlug: "mots-c",
     tags: ["энергия", "митохондрии", "выносливость"],
     inStock: true,
+    rating: 4.5,
   },
   {
     id: "prd_014",
@@ -991,6 +1004,7 @@ export const products: Product[] = [
     peptideSlug: "nad",
     tags: ["anti-age", "энергия", "память"],
     inStock: true,
+    rating: 4.3,
   },
   {
     id: "prd_015",
@@ -1011,6 +1025,7 @@ export const products: Product[] = [
     peptideSlug: "nad",
     tags: ["anti-age", "энергия", "премиум", "premium"],
     inStock: true,
+    rating: 4.8,
   },
   {
     id: "prd_016",
@@ -1031,6 +1046,7 @@ export const products: Product[] = [
     peptideSlug: "nad",
     tags: ["anti-age", "энергия", "курс", "популярное", "premium"],
     inStock: true,
+    rating: 4.6,
   },
 
   // Либидо и гормоны
@@ -1053,6 +1069,7 @@ export const products: Product[] = [
     peptideSlug: "kisspeptin-10",
     tags: ["либидо", "гормоны", "фертильность"],
     inStock: true,
+    rating: 4.4,
   },
   {
     id: "prd_018",
@@ -1072,6 +1089,7 @@ export const products: Product[] = [
     peptideSlug: "pt-141",
     tags: ["либидо", "быстрый эффект"],
     inStock: true,
+    rating: 4.7,
   },
 
   // Нейропептиды
@@ -1093,6 +1111,7 @@ export const products: Product[] = [
     peptideSlug: "oxytocin",
     tags: ["антистресс", "сон", "настроение"],
     inStock: true,
+    rating: 4.5,
   },
 
   // Аксессуары
@@ -1113,5 +1132,6 @@ export const products: Product[] = [
     category: "Аксессуары",
     tags: ["вода", "разведение", "необходимое"],
     inStock: true,
+    rating: 4.6,
   },
 ];
