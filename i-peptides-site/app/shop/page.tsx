@@ -81,9 +81,9 @@ export default function ShopPage() {
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Боковой виджет фильтров */}
         <aside className="lg:w-80 flex-shrink-0">
-          <div className="glass rounded-2xl overflow-hidden border border-slate-200/50 sticky top-6">
+          <div className="glass rounded-2xl border border-slate-200/50 sticky top-6 flex flex-col max-h-[calc(100vh-3rem)] overflow-hidden">
             {/* Заголовок виджета с градиентом */}
-            <div className="relative p-4 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500">
+            <div className="relative p-4 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex-shrink-0">
               <div className="absolute inset-0 bg-black/10" />
               <div className="relative flex items-center gap-2">
                 <span className="text-2xl">🔍</span>
@@ -91,7 +91,7 @@ export default function ShopPage() {
               </div>
             </div>
 
-            <div className="p-5 space-y-5">
+            <div className="p-5 space-y-5 overflow-y-auto flex-1 custom-scrollbar">
               {/* Поиск */}
               <div>
                 <label className="text-sm font-semibold text-slate-700 mb-2 block">
