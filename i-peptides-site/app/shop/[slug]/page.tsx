@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!p) {
     return {
-      title: "Product Not Found",
+      title: "Товар не найден",
     };
   }
 
@@ -66,18 +66,18 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
           <p className="text-slate-600">{p.short}</p>
 
           <div className="text-lg font-semibold">
-            {(p.priceCents / 100).toFixed(2)} {p.currency}
-            {!p.inStock && <span className="ml-2 text-sm text-slate-500">(out of stock)</span>}
+            {(p.priceCents / 100).toFixed(2)} {p.currency === "RUB" ? "₽" : p.currency === "USD" ? "$" : "€"}
+            {!p.inStock && <span className="ml-2 text-sm text-slate-500">(нет в наличии)</span>}
           </div>
 
           <AddToCart productId={p.id} disabled={!p.inStock} />
 
           {peptide && (
             <div className="glass rounded-xl2 p-4">
-              <div className="text-sm font-semibold">Linked to database entry</div>
+              <div className="text-sm font-semibold">Информация о пептиде</div>
               <p className="mt-1 text-sm text-slate-600">{peptide.summary}</p>
               <Link href={`/peptides/${peptide.slug}`} className="mt-2 inline-block text-sm text-blue-700 hover:underline">
-                Open {peptide.name} profile →
+                Подробнее о {peptide.name} →
               </Link>
             </div>
           )}
