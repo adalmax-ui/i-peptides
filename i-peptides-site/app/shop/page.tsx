@@ -15,18 +15,18 @@ export default function ShopPage() {
     return ["all", ...Array.from(cats)];
   }, []);
 
-  const categoryIcons: Record<string, string> = {
-    "all": "🏪",
-    "Метаболизм": "⚡",
-    "Жиросжигание": "🔥",
-    "Гормон роста": "📈",
-    "Иммунитет": "🛡️",
-    "Омоложение": "✨",
-    "Anti-age": "🕐",
-    "Регенерация": "🔄",
-    "Энергия": "⚡",
-    "Либидо": "💝",
-    "Нейропептиды": "🧠",
+  const categoryColors: Record<string, string> = {
+    "all": "bg-gradient-to-br from-slate-400 to-slate-500",
+    "Метаболизм": "bg-gradient-to-br from-yellow-400 to-orange-500",
+    "Жиросжигание": "bg-gradient-to-br from-red-400 to-pink-500",
+    "Гормон роста": "bg-gradient-to-br from-green-400 to-emerald-500",
+    "Иммунитет": "bg-gradient-to-br from-blue-400 to-cyan-500",
+    "Омоложение": "bg-gradient-to-br from-purple-400 to-pink-500",
+    "Anti-age": "bg-gradient-to-br from-violet-400 to-purple-500",
+    "Регенерация": "bg-gradient-to-br from-teal-400 to-green-500",
+    "Энергия": "bg-gradient-to-br from-amber-400 to-yellow-500",
+    "Либидо": "bg-gradient-to-br from-rose-400 to-red-500",
+    "Нейропептиды": "bg-gradient-to-br from-indigo-400 to-blue-500",
   };
 
   const filteredProducts = useMemo(() => {
@@ -85,8 +85,10 @@ export default function ShopPage() {
             {/* Заголовок виджета с градиентом */}
             <div className="relative p-4 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex-shrink-0">
               <div className="absolute inset-0 bg-black/10" />
-              <div className="relative flex items-center gap-2">
-                <span className="text-2xl">🔍</span>
+              <div className="relative flex items-center gap-3">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                </svg>
                 <h2 className="text-lg font-bold text-white">Фильтры</h2>
               </div>
             </div>
@@ -105,9 +107,9 @@ export default function ShopPage() {
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full rounded-xl border border-slate-200 bg-white/70 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-300 transition-all pl-10"
                   />
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
-                    🔎
-                  </span>
+                  <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
                 </div>
               </div>
 
@@ -119,7 +121,7 @@ export default function ShopPage() {
                 <div className="space-y-2">
                   {categories.map((cat) => {
                     const isActive = category === cat;
-                    const icon = categoryIcons[cat] || "📦";
+                    const colorClass = categoryColors[cat] || "bg-gradient-to-br from-slate-400 to-slate-500";
                     const productCount = cat === "all"
                       ? products.length
                       : products.filter(p => p.category === cat).length;
@@ -135,7 +137,7 @@ export default function ShopPage() {
                         }`}
                       >
                         <span className="flex items-center gap-2.5">
-                          <span className="text-lg">{icon}</span>
+                          <span className={`w-2.5 h-2.5 rounded-full ${isActive ? 'bg-white' : colorClass} flex-shrink-0`} />
                           <span className="text-sm font-medium">
                             {cat === "all" ? "Все категории" : cat}
                           </span>
@@ -196,7 +198,9 @@ export default function ShopPage() {
                   onClick={resetFilters}
                   className="w-full px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium transition-all flex items-center justify-center gap-2"
                 >
-                  <span>✕</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                   <span>Сбросить фильтры</span>
                 </button>
               )}
@@ -212,7 +216,11 @@ export default function ShopPage() {
             </div>
           ) : (
             <div className="glass rounded-2xl p-12 text-center">
-              <div className="text-6xl mb-4">🔍</div>
+              <div className="flex justify-center mb-4">
+                <svg className="w-16 h-16 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
               <h3 className="text-xl font-bold text-slate-800 mb-2">
                 Товары не найдены
               </h3>
@@ -224,7 +232,9 @@ export default function ShopPage() {
                   onClick={resetFilters}
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium hover:shadow-lg transition-all"
                 >
-                  <span>✕</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                   <span>Сбросить фильтры</span>
                 </button>
               )}
