@@ -17,7 +17,6 @@ export function Footer() {
             <ul className="mt-2 space-y-2 text-slate-600">
               <li><Link href="/shop" className="hover:underline">Магазин</Link></li>
               <li><Link href="/peptides" className="hover:underline">База пептидов</Link></li>
-              <li><Link href="/guides" className="hover:underline">Руководства</Link></li>
             </ul>
           </div>
 

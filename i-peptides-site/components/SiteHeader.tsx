@@ -19,7 +19,6 @@ export function SiteHeader() {
         <nav className="ml-2 hidden items-center gap-1 md:flex">
           <NavLink href="/shop">Магазин</NavLink>
           <NavLink href="/peptides">База пептидов</NavLink>
-          <NavLink href="/guides">Руководства</NavLink>
           <NavLink href="/support">Поддержка</NavLink>
         </nav>
 
@@ -58,7 +57,6 @@ export function SiteHeader() {
         <div className="mt-2 flex gap-1 overflow-x-auto">
           <NavLink href="/shop">Магазин</NavLink>
           <NavLink href="/peptides">База</NavLink>
-          <NavLink href="/guides">Гайды</NavLink>
           <NavLink href="/support">Помощь</NavLink>
         </div>
       </div>
