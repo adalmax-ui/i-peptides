@@ -1,9 +1,22 @@
 import Link from "next/link";
 import { clsx } from "clsx";
 
-export function Badge({ children }: { children: React.ReactNode }) {
+export function Badge({
+  children,
+  className,
+  variant = "default"
+}: {
+  children: React.ReactNode;
+  className?: string;
+  variant?: "default" | "outline";
+}) {
   return (
-    <span className="inline-flex items-center rounded-full border border-slate-200 bg-white/70 px-2.5 py-1 text-xs text-slate-700">
+    <span className={clsx(
+      "inline-flex items-center rounded-full px-2.5 py-1 text-xs",
+      variant === "default" && "border border-slate-200 bg-white/70 text-slate-700",
+      variant === "outline" && "border border-slate-300 bg-transparent text-slate-700",
+      className
+    )}>
       {children}
     </span>
   );
