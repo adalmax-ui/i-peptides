@@ -47,7 +47,7 @@ export default function SearchPage() {
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="font-semibold">Товары</h2>
+            <h2 className="font-semibold">Товары в магазине</h2>
             <Badge>{res.products.length}</Badge>
           </div>
           <div className="space-y-2">
@@ -63,7 +63,7 @@ export default function SearchPage() {
 
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="font-semibold">Пептиды</h2>
+            <h2 className="font-semibold">База знаний о пептидах</h2>
             <Badge>{res.peptides.length}</Badge>
           </div>
           <div className="space-y-2">
@@ -73,7 +73,7 @@ export default function SearchPage() {
                 <div className="mt-1 text-sm text-slate-600">{pep.summary}</div>
               </Link>
             ))}
-            {q && res.peptides.length === 0 && <div className="text-sm text-slate-600">Пептиды не найдены</div>}
+            {q && res.peptides.length === 0 && <div className="text-sm text-slate-600">Информация не найдена</div>}
           </div>
         </div>
       </div>
