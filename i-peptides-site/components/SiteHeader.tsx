@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Search, ShoppingBag, User } from "lucide-react";
 import { NavLink } from "./ui";
 import { useCart } from "@/lib/cart";
@@ -11,9 +12,15 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/60 bg-white/60 backdrop-blur">
       <div className="container flex h-16 items-center gap-3">
-        <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-blue-600 text-white">iP</span>
-          <span>i-peptides</span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt="I-PEPTIDES"
+            width={180}
+            height={45}
+            className="h-10 w-auto"
+            priority
+          />
         </Link>
 
         <nav className="ml-2 hidden items-center gap-1 md:flex">

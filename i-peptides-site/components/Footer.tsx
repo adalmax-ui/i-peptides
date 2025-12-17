@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -6,7 +7,13 @@ export function Footer() {
       <div className="container py-10">
         <div className="grid gap-6 md:grid-cols-4">
           <div>
-            <div className="font-semibold">i-peptides</div>
+            <Image
+              src="/logo.png"
+              alt="I-PEPTIDES"
+              width={160}
+              height={40}
+              className="h-8 w-auto mb-3"
+            />
             <p className="mt-2 text-sm text-slate-600">
               Профессиональный интернет-магазин сертифицированных пептидов высокой чистоты с базой знаний и поддержкой специалистов.
             </p>
