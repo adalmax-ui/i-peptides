@@ -111,50 +111,21 @@ export function ProductCard({ p }: { p: Product }) {
 }
 
 export function PeptideCard({ pep }: { pep: Peptide }) {
-  // Иконки для категорий
-  const categoryIcons: Record<string, string> = {
-    "Метаболизм": "⚡",
-    "Жиросжигание": "🔥",
-    "Гормон роста": "📈",
-    "Иммунитет": "🛡️",
-    "Омоложение": "✨",
-    "Anti-age": "🕐",
-    "Регенерация": "🔄",
-    "Энергия": "⚡",
-    "Либидо": "💝",
-    "Нейропептиды": "🧠",
-  };
-
-  const icon = categoryIcons[pep.category] || "🔬";
-
   return (
-    <div className="group relative glass rounded-xl2 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-slate-200/50 hover:border-purple-300">
-      {/* Градиентная полоска сверху */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-
-      {/* Фоновый градиент */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/50 to-pink-50/50 opacity-0 group-hover:opacity-100 transition-opacity" />
-
-      <div className="relative p-5">
-        <div className="flex items-start gap-4">
-          {/* Иконка категории */}
-          <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-            {icon}
-          </div>
-
-          <div className="flex-1 min-w-0">
-            <Link href={`/peptides/${pep.slug}`} className="text-lg font-bold text-slate-900 hover:text-blue-600 transition-colors line-clamp-1">
-              {pep.name}
-            </Link>
-            <p className="mt-2 text-sm text-slate-600 leading-relaxed line-clamp-2">{pep.summary}</p>
-          </div>
+    <div className="group glass rounded-2xl overflow-hidden transition-all hover:shadow-md border border-slate-200 hover:border-blue-300 shadow-sm">
+      <div className="p-5">
+        <div>
+          <Link href={`/peptides/${pep.slug}`} className="text-lg font-bold text-slate-900 hover:text-blue-600 transition-colors">
+            {pep.name}
+          </Link>
+          <p className="mt-2 text-sm text-slate-600 leading-relaxed line-clamp-2">{pep.summary}</p>
         </div>
 
-        <div className="mt-4 flex items-center gap-2">
-          <Badge className="bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 border-blue-200">
+        <div className="mt-4 flex items-center gap-2 flex-wrap">
+          <Badge className="bg-blue-50 text-blue-700 border-blue-200">
             {pep.category}
           </Badge>
-          <Badge variant="outline" className="text-slate-600">
+          <Badge variant="outline" className="text-slate-600 border-slate-300">
             {pep.researchStatus === "Approved drug (context-specific)" ? "Одобрен" :
              pep.researchStatus === "Clinical" ? "Клинические" :
              pep.researchStatus === "Early clinical" ? "Ранние испытания" :
