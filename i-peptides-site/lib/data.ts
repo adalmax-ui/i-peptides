@@ -789,6 +789,7 @@ export const products: Product[] = [
     tags: ["жиросжигание", "метаболизм", "безопасность"],
     inStock: true,
     rating: 4.5,
+    discount: 15,
   },
 
   // Рост и восстановление
@@ -878,6 +879,7 @@ export const products: Product[] = [
     tags: ["кожа", "коллаген", "заживление"],
     inStock: true,
     rating: 4.6,
+    discount: 10,
   },
   {
     id: "prd_009",
@@ -962,6 +964,7 @@ export const products: Product[] = [
     tags: ["восстановление", "суставы", "спорт"],
     inStock: true,
     rating: 4.4,
+    discount: 20,
   },
 
   // Энергия и метаболизм
@@ -1005,6 +1008,7 @@ export const products: Product[] = [
     tags: ["anti-age", "энергия", "память"],
     inStock: true,
     rating: 4.3,
+    discount: 15,
   },
   {
     id: "prd_015",
@@ -1070,6 +1074,7 @@ export const products: Product[] = [
     tags: ["либидо", "гормоны", "фертильность"],
     inStock: true,
     rating: 4.4,
+    discount: 25,
   },
   {
     id: "prd_018",
@@ -1112,6 +1117,7 @@ export const products: Product[] = [
     tags: ["антистресс", "сон", "настроение"],
     inStock: true,
     rating: 4.5,
+    discount: 10,
   },
 
   // Аксессуары

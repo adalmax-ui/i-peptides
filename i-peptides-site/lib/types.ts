@@ -13,6 +13,7 @@ export type Product = {
   tags: string[];
   inStock: boolean;
   rating?: number; // рейтинг от 1 до 5
+  discount?: number; // процент скидки (0-100)
 };
 
 export type Peptide = {
