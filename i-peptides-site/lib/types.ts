@@ -30,3 +30,47 @@ export type Peptide = {
   applications?: string[]; // области применения
   researchHistory?: string; // история и контекст исследований
 };
+
+export type User = {
+  id: string;
+  phone: string;
+  name: string;
+  email?: string;
+  createdAt: Date;
+  lastLogin: Date;
+};
+
+export type OrderStatus = "pending" | "confirmed" | "processing" | "shipped" | "delivered" | "cancelled";
+
+export type OrderItem = {
+  productId: string;
+  productTitle: string;
+  productImage: string;
+  quantity: number;
+  priceCents: number;
+  currency: string;
+};
+
+export type Order = {
+  id: string;
+  userId: string;
+  items: OrderItem[];
+  totalCents: number;
+  currency: string;
+  status: OrderStatus;
+  createdAt: Date;
+  updatedAt: Date;
+  deliveryAddress?: string;
+  trackingNumber?: string;
+};
+
+export type MedicalTest = {
+  id: string;
+  userId: string;
+  name: string; // название анализа
+  fileUrl: string; // URL загруженного файла
+  uploadedAt: Date;
+  notes?: string; // комментарии пользователя
+  consultantViewed: boolean; // просмотрен ли врачом
+  consultantNotes?: string; // заметки врача-консультанта
+};

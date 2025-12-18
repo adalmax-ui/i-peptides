@@ -4,13 +4,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FormEvent } from "react";
-import { Search, ShoppingBag, User } from "lucide-react";
+import { Search, ShoppingBag, User, LogIn } from "lucide-react";
 import { NavLink } from "./ui";
 import { useCart } from "@/lib/cart";
+import { useAuth } from "@/lib/auth";
 
 export function SiteHeader() {
   const count = useCart((s) => s.items.reduce((acc, it) => acc + it.qty, 0));
   const router = useRouter();
+  const { isAuthenticated } = useAuth();
 
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -57,9 +59,19 @@ export function SiteHeader() {
             />
           </form>
 
-          <Link href="/account" className="rounded-xl p-2 hover:bg-white/60" aria-label="Аккаунт">
-            <User className="h-5 w-5 text-slate-700" />
-          </Link>
+          {isAuthenticated ? (
+            <Link href="/account" className="rounded-xl p-2 hover:bg-white/60" aria-label="Аккаунт">
+              <User className="h-5 w-5 text-slate-700" />
+            </Link>
+          ) : (
+            <Link
+              href="/auth/login"
+              className="hidden items-center gap-2 rounded-xl px-3 py-2 text-sm text-slate-700 hover:bg-white/60 md:flex"
+            >
+              <LogIn className="h-4 w-4" />
+              Войти
+            </Link>
+          )}
 
           <Link href="/cart" className="relative rounded-xl p-2 hover:bg-white/60" aria-label="Корзина">
             <ShoppingBag className="h-5 w-5 text-slate-700" />
