@@ -2,12 +2,26 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { FormEvent } from "react";
 import { Search, ShoppingBag, User } from "lucide-react";
 import { NavLink } from "./ui";
 import { useCart } from "@/lib/cart";
 
 export function SiteHeader() {
   const count = useCart((s) => s.items.reduce((acc, it) => acc + it.qty, 0));
+  const router = useRouter();
+
+  const handleSearch = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const query = formData.get("query") as string;
+    if (query.trim()) {
+      router.push(`/search?q=${encodeURIComponent(query)}`);
+    } else {
+      router.push("/search");
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/60 bg-white/60 backdrop-blur">
@@ -30,13 +44,18 @@ export function SiteHeader() {
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
-          <Link
-            href="/search"
-            className="hidden items-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm text-slate-600 hover:text-slate-900 md:flex"
+          <form
+            onSubmit={handleSearch}
+            className="hidden items-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 md:flex"
           >
-            <Search className="h-4 w-4" />
-            <span>Поиск товаров и пептидов…</span>
-          </Link>
+            <Search className="h-4 w-4 text-slate-600" />
+            <input
+              type="text"
+              name="query"
+              placeholder="Поиск товаров и пептидов…"
+              className="w-64 bg-transparent text-sm text-slate-900 placeholder:text-slate-600 focus:outline-none"
+            />
+          </form>
 
           <Link href="/account" className="rounded-xl p-2 hover:bg-white/60" aria-label="Аккаунт">
             <User className="h-5 w-5 text-slate-700" />
@@ -54,13 +73,18 @@ export function SiteHeader() {
       </div>
 
       <div className="container pb-3 md:hidden">
-        <Link
-          href="/search"
-          className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm text-slate-600"
+        <form
+          onSubmit={handleSearch}
+          className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-3 py-2"
         >
-          <Search className="h-4 w-4" />
-          <span>Поиск…</span>
-        </Link>
+          <Search className="h-4 w-4 text-slate-600" />
+          <input
+            type="text"
+            name="query"
+            placeholder="Поиск…"
+            className="flex-1 bg-transparent text-sm text-slate-900 placeholder:text-slate-600 focus:outline-none"
+          />
+        </form>
         <div className="mt-2 flex gap-1 overflow-x-auto">
           <NavLink href="/shop">Магазин</NavLink>
           <NavLink href="/peptides">База</NavLink>
