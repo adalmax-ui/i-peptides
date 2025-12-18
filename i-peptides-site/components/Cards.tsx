@@ -27,12 +27,12 @@ export function ProductCard({ p }: { p: Product }) {
       <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-secondary-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       {/* Изображение */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-slate-100 to-slate-50">
+      <div className="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-slate-100 to-slate-50">
         <Image
           src={p.image}
           alt={p.title}
           fill
-          className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
+          className="object-contain transition-all duration-700 group-hover:scale-105"
         />
 
         {/* Оверлей градиент */}
