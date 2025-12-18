@@ -29,7 +29,7 @@ export function Button(props: React.ButtonHTMLAttributes<HTMLButtonElement> & { 
       className={clsx(
         "inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition",
         variant === "solid" &&
-          "bg-blue-600 text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-600/60",
+          "bg-primary-500 text-white hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500/60",
         variant === "ghost" &&
           "bg-transparent text-slate-800 hover:bg-white/60 border border-slate-200",
         className

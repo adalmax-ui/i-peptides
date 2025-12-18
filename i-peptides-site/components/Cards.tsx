@@ -22,9 +22,9 @@ export function ProductCard({ p }: { p: Product }) {
   };
 
   return (
-    <div className="group relative glass rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 border border-slate-200/50 hover:border-blue-300/50">
+    <div className="group relative glass rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-2 border border-slate-200/50 hover:border-primary-300/50">
       {/* Градиентная подсветка при наведении */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-secondary-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       {/* Изображение */}
       <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-slate-100 to-slate-50">
@@ -56,7 +56,7 @@ export function ProductCard({ p }: { p: Product }) {
       {/* Контент */}
       <div className="relative p-5">
         <div className="mb-3">
-          <Link href={`/shop/${p.slug}`} className="text-lg font-bold text-slate-900 hover:text-blue-600 transition-colors duration-200 line-clamp-1">
+          <Link href={`/shop/${p.slug}`} className="text-lg font-bold text-slate-900 hover:text-primary-600 transition-colors duration-200 line-clamp-1">
             {p.title}
           </Link>
           <p className="mt-2 text-sm text-slate-600 line-clamp-2 leading-relaxed">{p.short}</p>
@@ -67,7 +67,7 @@ export function ProductCard({ p }: { p: Product }) {
           <div className="mb-3 space-y-1">
             {p.benefits.map((benefit, idx) => (
               <div key={idx} className="flex items-start gap-2 text-xs text-slate-600">
-                <span className="text-blue-500 mt-0.5">✓</span>
+                <span className="text-secondary-500 mt-0.5">✓</span>
                 <span className="leading-relaxed">{benefit}</span>
               </div>
             ))}
@@ -75,7 +75,7 @@ export function ProductCard({ p }: { p: Product }) {
         )}
 
         <div className="flex items-center gap-2 mb-4">
-          <span className="px-2 py-1 rounded-lg bg-blue-50 text-blue-700 text-xs font-medium">
+          <span className="px-2 py-1 rounded-lg bg-secondary-50 text-secondary-700 text-xs font-medium">
             {p.category}
           </span>
           {p.inStock ? (
@@ -92,7 +92,7 @@ export function ProductCard({ p }: { p: Product }) {
 
         <div className="flex items-center justify-between gap-3 pt-3 border-t border-slate-100">
           <div className="flex flex-col">
-            <span className="text-2xl font-bold text-blue-600">
+            <span className="text-2xl font-bold text-primary-600">
               {(p.priceCents / 100).toFixed(0)}{p.currency === "RUB" ? "₽" : p.currency === "USD" ? "$" : "€"}
             </span>
           </div>
@@ -113,19 +113,19 @@ export function ProductCard({ p }: { p: Product }) {
 export function PeptideCard({ pep }: { pep: Peptide }) {
   return (
     <Link href={`/peptides/${pep.slug}`} className="block">
-      <div className="group glass rounded-2xl overflow-hidden transition-all hover:shadow-lg border border-slate-200 hover:border-blue-400 shadow-sm hover:-translate-y-1 relative">
+      <div className="group glass rounded-2xl overflow-hidden transition-all hover:shadow-lg border border-slate-200 hover:border-secondary-400 shadow-sm hover:-translate-y-1 relative">
         {/* Левый цветной акцент */}
-        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-secondary-500 to-secondary-600 opacity-0 group-hover:opacity-100 transition-opacity" />
 
         {/* Фоновый градиент при hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute inset-0 bg-gradient-to-br from-secondary-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
         <div className="relative p-6">
           <div className="flex items-start justify-between gap-3 mb-3">
-            <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+            <h3 className="text-lg font-bold text-slate-900 group-hover:text-secondary-600 transition-colors">
               {pep.name}
             </h3>
-            <svg className="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-slate-400 group-hover:text-secondary-500 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </div>
@@ -133,7 +133,7 @@ export function PeptideCard({ pep }: { pep: Peptide }) {
           <p className="text-sm text-slate-600 leading-relaxed line-clamp-2 mb-4">{pep.summary}</p>
 
           <div className="flex items-center gap-2 flex-wrap">
-            <Badge className="bg-blue-50 text-blue-700 border-blue-200 font-medium">
+            <Badge className="bg-secondary-50 text-secondary-700 border-secondary-200 font-medium">
               {pep.category}
             </Badge>
             <Badge variant="outline" className="text-slate-600 border-slate-300 font-medium">

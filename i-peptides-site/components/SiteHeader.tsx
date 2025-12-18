@@ -64,7 +64,7 @@ export function SiteHeader() {
           <Link href="/cart" className="relative rounded-xl p-2 hover:bg-white/60" aria-label="Корзина">
             <ShoppingBag className="h-5 w-5 text-slate-700" />
             {count > 0 && (
-              <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-blue-600 px-1 text-xs text-white">
+              <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-primary-500 px-1 text-xs text-white">
                 {count}
               </span>
             )}
